@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:gravity="center">
 
         <EditText
@@ -41,7 +41,7 @@
     <EditText
         android:id="@+id/edtThree"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:hint="Result" />
     <Button

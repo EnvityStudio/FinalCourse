@@ -1,0 +1,23 @@
+{
+  "studentList": [
+    {
+      "id":"1",
+      "name":"Nguyen Van Thuan",
+      "imageUrl":"a.png",
+      "status":"Sad"
+    } ,
+    {
+      "id":"2",
+      "name":"Nguyen Van B",
+      "imageUrl":"b.png",
+      "status":"Sad"
+    } ,
+    {
+      "id":"3",
+      "name":"Nguyen Van C",
+      "imageUrl":"c.png",
+      "status":"Aaaa"
+    }
+
+  ]
+}

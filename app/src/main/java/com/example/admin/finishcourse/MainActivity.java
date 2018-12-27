@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.admin.finishcourse.lessonOne.Lesson1Activity;
+import com.example.admin.finishcourse.lessonSix.LessonSixActivity;
 import com.example.admin.finishcourse.lessonThree.LessonThreeActivity;
 import com.example.admin.finishcourse.lessonTwo.LessonTwoActivity;
 
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "Coming soooonnnnn!!!!", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnLesson6:
-                Toast.makeText(this, "Coming soooonnnnn!!!!", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, LessonSixActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btnLesson7:
                 Toast.makeText(this, "Coming soooonnnnn!!!!", Toast.LENGTH_SHORT).show();

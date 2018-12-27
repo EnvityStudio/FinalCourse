@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/tvResultLesson2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="result"
         android:textSize="20dp" />
 

@@ -31,6 +31,12 @@
         <activity android:name=".lessonThree.LessonThreeSubActivity">
 
         </activity>
+        <activity android:name=".lessonSix.LessonSixActivity">
+
+        </activity>
+        <activity android:name=".lessonSix.LessonSixSubActivity">
+
+        </activity>
     </application>
 
 </manifest>
