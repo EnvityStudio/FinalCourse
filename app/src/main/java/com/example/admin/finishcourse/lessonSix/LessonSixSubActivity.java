@@ -3,6 +3,7 @@ package com.example.admin.finishcourse.lessonSix;
  * @author Thuan Envity
  * @date 2018/12/27
  */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,10 +25,10 @@ public class LessonSixSubActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson6);
-        tvName = (TextView)findViewById(R.id.tvNameLesson6);
+        tvName = (TextView) findViewById(R.id.tvNameLesson6);
         edtStatus = (EditText) findViewById(R.id.edtStatusLesson6);
-        btnUpdate = (Button)findViewById(R.id.btnUpdateLesson6);
-        btnCancle = (Button)findViewById(R.id.btnCancelLesson6);
+        btnUpdate = (Button) findViewById(R.id.btnUpdateLesson6);
+        btnCancle = (Button) findViewById(R.id.btnCancelLesson6);
         final Student student = (Student) getIntent().getSerializableExtra("student");
         tvName.setText(student.getName().toString());
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -35,10 +36,10 @@ public class LessonSixSubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 student.setStatus(edtStatus.getText().toString());
                 Intent intent = new Intent();
-                intent.putExtra("updateStudent",student);
+                intent.putExtra("updateStudent", student);
                 setResult(RESULT_OK, intent);
                 finish();
-              //  onBackPressed();
+                //  onBackPressed();
             }
         });
         btnCancle.setOnClickListener(new View.OnClickListener() {

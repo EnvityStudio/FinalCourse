@@ -29,6 +29,7 @@ public class LessonSixRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         this.mContext = mContext;
         this.studentList = studentList;
     }
+
     // udpate data when change status
     public void update(List<Student> studentList) {
         this.studentList = studentList;

@@ -1,0 +1,19 @@
+{
+  "studentList": [
+    {
+      "id": "1",
+      "name": "Nguyen Van Thuan",
+      "className": "CNPM13"
+    },
+    {
+      "id": "2",
+      "name": "Nguyen Van B",
+      "className": "CNPM12"
+    },
+    {
+      "id": "3",
+      "name": "Nguyen Van C",
+      "className": "3E"
+    }
+  ]
+}

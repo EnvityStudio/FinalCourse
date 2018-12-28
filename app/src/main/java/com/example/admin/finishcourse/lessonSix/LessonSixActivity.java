@@ -53,9 +53,9 @@ public class LessonSixActivity extends AppCompatActivity {
                 "  ]\n" +
                 "}\n";
 
-       StudentData studentData = (StudentData) gson.fromJson(json, StudentData.class);
+        StudentData studentData = (StudentData) gson.fromJson(json, StudentData.class);
 
-       studentList = studentData.getStudentList();
+        studentList = studentData.getStudentList();
         Log.d(TAG, "convertJson: " + studentList.get(1).getName());
     }
 
@@ -63,14 +63,14 @@ public class LessonSixActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG,"onActivityResult");
-        if(requestCode==1){
-            if(resultCode==RESULT_OK){
+        Log.d(TAG, "onActivityResult");
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
 
                 Student student = (Student) data.getSerializableExtra("updateStudent");
-                studentList.get(Integer.parseInt(student.getId())-1).setStatus(student.getStatus());
-                Log.d(TAG, studentList.get(Integer.parseInt(student.getId())-1).getName());
-                Log.d(TAG, studentList.get(Integer.parseInt(student.getId())-1).getStatus());
+                studentList.get(Integer.parseInt(student.getId()) - 1).setStatus(student.getStatus());
+                Log.d(TAG, studentList.get(Integer.parseInt(student.getId()) - 1).getName());
+                Log.d(TAG, studentList.get(Integer.parseInt(student.getId()) - 1).getStatus());
                 mLessonSixRecyclerViewAdapter.update(studentList);
             }
         }
@@ -93,10 +93,10 @@ public class LessonSixActivity extends AppCompatActivity {
         mLessonSixRecyclerViewAdapter.setOnItemListener(new LessonSixRecyclerViewAdapter.OnItemListener() {
             @Override
             public void onItemClick(String student) {
-                Log.d(TAG,student);
-                Intent intent = new Intent(LessonSixActivity.this,LessonSixSubActivity.class);
-                intent.putExtra("student",studentList.get(Integer.parseInt(student)-1));
-                startActivityForResult(intent,1);
+                Log.d(TAG, student);
+                Intent intent = new Intent(LessonSixActivity.this, LessonSixSubActivity.class);
+                intent.putExtra("student", studentList.get(Integer.parseInt(student) - 1));
+                startActivityForResult(intent, 1);
             }
         });
 

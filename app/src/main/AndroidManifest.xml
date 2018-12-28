@@ -45,6 +45,9 @@
         <activity android:name=".lessonSeven.LessonSevenSubActivity">
 
         </activity>
+        <activity android:name=".lessonEight.LessonEightActivity">
+
+        </activity>
     </application>
 
 </manifest>
