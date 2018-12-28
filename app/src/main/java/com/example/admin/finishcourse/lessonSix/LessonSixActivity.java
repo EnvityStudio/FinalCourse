@@ -34,7 +34,7 @@ public class LessonSixActivity extends AppCompatActivity {
                 "    {\n" +
                 "      \"id\":\"1\",\n" +
                 "      \"name\":\"Nguyen Van C\",\n" +
-                "      \"imageUrl\":\"a\",\n" +
+                "      \"imageUrl\":\"b\",\n" +
                 "      \"status\":\"Sad\"\n" +
                 "    } ,\n" +
                 "    {\n" +
@@ -53,8 +53,8 @@ public class LessonSixActivity extends AppCompatActivity {
                 "  ]\n" +
                 "}\n";
 
-
        StudentData studentData = (StudentData) gson.fromJson(json, StudentData.class);
+
        studentList = studentData.getStudentList();
         Log.d(TAG, "convertJson: " + studentList.get(1).getName());
     }

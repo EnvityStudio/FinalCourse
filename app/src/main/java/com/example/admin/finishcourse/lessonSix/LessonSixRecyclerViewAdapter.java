@@ -29,9 +29,10 @@ public class LessonSixRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         this.mContext = mContext;
         this.studentList = studentList;
     }
+    // udpate data when change status
     public void update(List<Student> studentList) {
         this.studentList = studentList;
-
+        // commit change
         notifyDataSetChanged();
     }
     @Override
@@ -45,10 +46,10 @@ public class LessonSixRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         ((ItemHolder)holder).tvName.setText(studentList.get(position).getName());
         ((ItemHolder)holder).tvStatus.setText(studentList.get(position).getStatus());
-        ((ItemHolder)holder).setIdStudent(studentList.get(position).getId());
+
         String imageURL = studentList.get(position).getImageUrl();
         int i = R.drawable.a;
-        Log.d("LessonSixrAdapter i: ", i + "");
+        Log.d("LessonSixAdapter i: ", i + "");
         int i2 = mContext.getResources().getIdentifier("a","drawable",mContext.getPackageName());
         Log.d("LessonSixAdapter i2: ", i2 + "");
         Log.d("ImageURL:  ", imageURL);
@@ -73,15 +74,7 @@ public class LessonSixRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         private TextView tvName;
         private TextView tvStatus;
         private LinearLayout linearLayout;
-        private String idStudent;
 
-        public void setIdStudent(String idStudent) {
-            this.idStudent = idStudent;
-        }
-
-        public String getIdStudent() {
-            return idStudent;
-        }
 
         public ItemHolder(View itemView) {
             super(itemView);
