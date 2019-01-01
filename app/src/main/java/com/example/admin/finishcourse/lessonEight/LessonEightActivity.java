@@ -21,13 +21,16 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -46,14 +49,16 @@ public class LessonEightActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson8_main);
+        studentList = new ArrayList<>();
         edtName = (EditText) findViewById(R.id.edtNameLesson8);
         edtClassName = (EditText) findViewById(R.id.edtClassLesson8);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createStudent();
-                mLessonEightRecyclerViewAdapter.update(studentList);
+                String json = createStudent();
+//                mLessonEightRecyclerViewAdapter.update(studentList);
+                new StudentInfoProcesor().execute(Constants.LOCALHOST + Constants.PATH_STUDENT, "post", json);
                 Toast.makeText(LessonEightActivity.this, "clickkk", Toast.LENGTH_SHORT).show();
             }
         });
@@ -69,24 +74,28 @@ public class LessonEightActivity extends AppCompatActivity {
     }
 
     public void processJsonString(String students) {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
-        studentList = (List<Student>) gson.fromJson(students,StudentData.class);
+
+        Gson gson = new Gson();
+        studentList = new LinkedList<>(Arrays.asList(gson.fromJson(students, Student[].class)));
         Log.d(TAG, studentList.get(1).getName());
 
     }
 
     private String createStudent() {
         Student student = new Student();
+
         student.setId(studentList.size() + 1);
         student.setName(edtName.getText().toString());
         student.setClassName(edtClassName.getText().toString());
-
+        edtName.setText(" ");
+        edtClassName.setText(" ");
 
         studentList.add(student);
+
         Gson gson = new Gson();
         String json = gson.toJson(student);
-        Log.d(TAG,json);
+
+        Log.d(TAG, json);
         return json;
     }
 
@@ -100,17 +109,19 @@ public class LessonEightActivity extends AppCompatActivity {
             Integer result = 0;
             try {
 
-                URL url = new URL(strings[0]);
+
                 Log.d(TAG, strings[0]);
                 Log.d(TAG, strings[1]);
                 Integer a = strings[1].toString().compareTo("get");
-                Log.d(TAG,a.toString());
-                if ( strings[1].toString().compareTo("get")==0) {
+                Log.d(TAG, a.toString());
+                if (strings[1].toString().compareTo("get") == a) {
+                    URL url = new URL(strings[0]);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestProperty("Content-Type", "application/json");
                     httpURLConnection.setRequestProperty("Accept", "application/json");
                     httpURLConnection.setRequestMethod("GET");
                     int code = httpURLConnection.getResponseCode();
+                    Log.d("codeee", String.valueOf(code));
                     if (code == 200) {
                         Log.d(TAG, "success");
                         inputStream = new BufferedInputStream(httpURLConnection.getInputStream());
@@ -121,6 +132,21 @@ public class LessonEightActivity extends AppCompatActivity {
                     } else {
                         result = 1;
                     }
+                } else {
+                    Log.d("Lesson8Activity", "POSTTTTTT");
+                    URL url = new URL(strings[0]);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestProperty("Content-Type", "application/json");
+                    httpURLConnection.setRequestProperty("Accept", "application/json");
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    BufferedWriter bv = new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(), "UTF-8"));
+                    bv.write(strings[2]);
+                    bv.flush();
+                    bv.close();
+                    httpURLConnection.getResponseCode();
+                    httpURLConnection.disconnect();
+                    result = 2;
                 }
 
             } catch (MalformedURLException e) {
@@ -172,6 +198,9 @@ public class LessonEightActivity extends AppCompatActivity {
 
                 });
                 Log.d(TAG, "onPostExecute done");
+            } else if (result == 2) {
+                Log.d(TAG,"onPostExecute result =2");
+                mLessonEightRecyclerViewAdapter.update(studentList);
             } else {
                 Toast.makeText(LessonEightActivity.this, "Something went wrong!!!", Toast.LENGTH_LONG);
             }

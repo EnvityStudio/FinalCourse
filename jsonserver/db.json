@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Nguyen Van Thuan",
       "address": "Ha Noi",
-      "imageUrl": "a.png",
+      "imageUrl": "c.png",
       "dateOfBirth": "1/1/1991",
       "status": "Sad"
     },
@@ -20,7 +20,7 @@
       "id": "3",
       "name": "Nguyen Van C",
       "address": "Ha Noi",
-      "imageUrl": "c.png",
+      "imageUrl": "a.png",
       "dateOfBirth": "1/1/1993",
       "status": "Sadddddd"
     }

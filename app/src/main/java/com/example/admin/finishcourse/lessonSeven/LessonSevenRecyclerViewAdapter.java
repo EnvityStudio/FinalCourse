@@ -34,7 +34,7 @@ public class LessonSevenRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         ((ItemHolder)holder).tvName.setText(studentList.get(position).getName());
         ((ItemHolder)holder).tvStatus.setText(studentList.get(position).getStatus());
         String  nameImage = studentList.get(position).getImageUrl();
-        Picasso.with(mContext).load(Constants.URL_IMAGE + nameImage).into(((ItemHolder)holder).imageView);
+        Picasso.with(mContext).load(Constants.LOCALHOST +"/" +nameImage).into(((ItemHolder)holder).imageView);
         ((ItemHolder)holder).linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

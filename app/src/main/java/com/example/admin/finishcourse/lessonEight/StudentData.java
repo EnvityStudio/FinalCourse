@@ -1,8 +1,9 @@
 package com.example.admin.finishcourse.lessonEight;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class StudentData {
+public class StudentData implements Serializable{
     private List<Student> studentList;
 
     public StudentData() {

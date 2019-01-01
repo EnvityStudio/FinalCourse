@@ -6,6 +6,7 @@ package com.example.admin.finishcourse.lessonEight;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class LessonEightRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     @Override
     public int getItemCount() {
+        Log.d("Lesson8RecycAdapter","getItemCount");
         return studentList.size();
     }
 
