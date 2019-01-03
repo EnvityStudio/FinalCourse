@@ -85,7 +85,60 @@ public class LessonEightActivity extends AppCompatActivity {
 
     }
 
+    private String createStudent() {
+        Student student = new Student();
 
+        student.setId(studentList.size() + 1);
+        student.setName(edtName.getText().toString());
+        student.setClassName(edtClassName.getText().toString());
+        edtName.setText(" ");
+        edtClassName.setText(" ");
+
+        studentList.add(student);
+
+        Gson gson = new Gson();
+        final String json = gson.toJson(student);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url = null;
+                try {
+                    url = new URL(Constants.LOCALHOST + Constants.PATH_STUDENT);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                HttpURLConnection httpURLConnection = null;
+                try {
+                    httpURLConnection = (HttpURLConnection) url.openConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                httpURLConnection.setRequestProperty("Content-Type", "application/json");
+                httpURLConnection.setRequestProperty("Accept", "application/json");
+                try {
+                    httpURLConnection.setRequestMethod("POST");
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                }
+                httpURLConnection.setDoOutput(true);
+                BufferedWriter bv = null;
+                try {
+                    bv = new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(), "UTF-8"));
+                    bv.write(json);
+                    bv.flush();
+                    bv.close();
+                    httpURLConnection.getResponseCode();
+                    httpURLConnection.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        thread.start();
+        Log.d(TAG, json);
+        return json;
+    }
 
     private class StudentInfoProcesor extends AsyncTask<String, Void, Integer> {
 
