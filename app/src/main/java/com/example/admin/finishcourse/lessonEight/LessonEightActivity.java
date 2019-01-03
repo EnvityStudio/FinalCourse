@@ -49,6 +49,7 @@ public class LessonEightActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson8_main);
+        setTitle("Lesson 8");
         studentList = new ArrayList<>();
         edtName = (EditText) findViewById(R.id.edtNameLesson8);
         edtClassName = (EditText) findViewById(R.id.edtClassLesson8);
