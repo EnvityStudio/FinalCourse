@@ -57,8 +57,8 @@ public class LessonEightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String json = createStudent();
-//                mLessonEightRecyclerViewAdapter.update(studentList);
-                new StudentInfoProcesor().execute(Constants.LOCALHOST + Constants.PATH_STUDENT, "post", json);
+                mLessonEightRecyclerViewAdapter.update(studentList);
+                //    new StudentInfoProcesor().execute(Constants.LOCALHOST + Constants.PATH_STUDENT, "post", json);
                 Toast.makeText(LessonEightActivity.this, "clickkk", Toast.LENGTH_SHORT).show();
             }
         });
@@ -93,8 +93,45 @@ public class LessonEightActivity extends AppCompatActivity {
         studentList.add(student);
 
         Gson gson = new Gson();
-        String json = gson.toJson(student);
+       final String json = gson.toJson(student);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url = null;
+                try {
+                    url = new URL(Constants.LOCALHOST + Constants.PATH_STUDENT);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                HttpURLConnection httpURLConnection = null;
+                try {
+                    httpURLConnection = (HttpURLConnection) url.openConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                httpURLConnection.setRequestProperty("Content-Type", "application/json");
+                httpURLConnection.setRequestProperty("Accept", "application/json");
+                try {
+                    httpURLConnection.setRequestMethod("POST");
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                }
+                httpURLConnection.setDoOutput(true);
+                BufferedWriter bv = null;
+                try {
+                    bv = new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(), "UTF-8"));
+                    bv.write(json);
+                    bv.flush();
+                    bv.close();
+                    httpURLConnection.getResponseCode();
+                    httpURLConnection.disconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+            }
+        });
+        thread.start();
         Log.d(TAG, json);
         return json;
     }
@@ -199,7 +236,7 @@ public class LessonEightActivity extends AppCompatActivity {
                 });
                 Log.d(TAG, "onPostExecute done");
             } else if (result == 2) {
-                Log.d(TAG,"onPostExecute result =2");
+                Log.d(TAG, "onPostExecute result =2");
                 mLessonEightRecyclerViewAdapter.update(studentList);
             } else {
                 Toast.makeText(LessonEightActivity.this, "Something went wrong!!!", Toast.LENGTH_LONG);

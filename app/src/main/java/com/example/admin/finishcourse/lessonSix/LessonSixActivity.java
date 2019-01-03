@@ -34,7 +34,7 @@ public class LessonSixActivity extends AppCompatActivity {
                 "    {\n" +
                 "      \"id\":\"1\",\n" +
                 "      \"name\":\"Nguyen Van C\",\n" +
-                "      \"imageUrl\":\"b\",\n" +
+                "      \"imageUrl\":\"a\",\n" +
                 "      \"status\":\"Sad\"\n" +
                 "    } ,\n" +
                 "    {\n" +
