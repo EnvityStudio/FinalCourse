@@ -24,6 +24,7 @@ public class Lesson1Activity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson1_main);
+        setTitle("Lesson 1");
         edtOne = (EditText) findViewById(R.id.edtOne);
         edtTwo = (EditText) findViewById(R.id.edtTwo);
         edtThree = (EditText) findViewById(R.id.edtThree);

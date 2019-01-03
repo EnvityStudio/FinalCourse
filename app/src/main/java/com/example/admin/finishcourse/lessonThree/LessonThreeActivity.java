@@ -29,6 +29,7 @@ public class LessonThreeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson3_main);
+        setTitle("Lesson 3");
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         // add list student
         studentList = new ArrayList<>();

@@ -25,6 +25,7 @@ public class LessonSixSubActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson6);
+        setTitle("Lesson 6 detail");
         tvName = (TextView) findViewById(R.id.tvNameLesson6);
         edtStatus = (EditText) findViewById(R.id.edtStatusLesson6);
         btnUpdate = (Button) findViewById(R.id.btnUpdateLesson6);

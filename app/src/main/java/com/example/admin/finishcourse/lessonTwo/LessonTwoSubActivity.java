@@ -16,6 +16,7 @@ public class LessonTwoSubActivity extends AppCompatActivity {
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson2);
+        setTitle("Lesson 2 detail");
         textView = (TextView) findViewById(R.id.tvResultLesson2);
         // Get string from LessonTwoActivity
         Bundle bundle = getIntent().getExtras();

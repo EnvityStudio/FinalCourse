@@ -24,6 +24,7 @@ public class LessonTwoActivity extends AppCompatActivity implements View.OnClick
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson2_main);
+        setTitle("Lesson 2");
         edtOne = (EditText) findViewById(R.id.edtOne);
         edtTwo = (EditText) findViewById(R.id.edtTwo);
         btnSum = (Button) findViewById(R.id.btnSum);
