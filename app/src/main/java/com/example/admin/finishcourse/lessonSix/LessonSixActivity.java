@@ -80,6 +80,7 @@ public class LessonSixActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson6_main);
+        setTitle("Lesson 6");
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewLesson6);
         studentList = new ArrayList<>();
         convertJson();

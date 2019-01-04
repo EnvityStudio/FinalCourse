@@ -16,6 +16,7 @@ public class LessonSevenSubActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson7);
+        setTitle("Lesson 7 Detail");
         tvName = (TextView)findViewById(R.id.tvNameLesson7);
         tvAddress = (TextView) findViewById(R.id.tvAddressLesson7);
         tvDOB = (TextView) findViewById(R.id.tvDOBLesson7);

@@ -23,6 +23,7 @@ public class LessonThreeSubActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson3);
+        setTitle("Lesson 3 detail");
         name = (TextView) findViewById(R.id.tvName);
         dateOfBirth = (TextView) findViewById(R.id.tvDateOfBirth);
         address = (TextView) findViewById(R.id.tvAddress);

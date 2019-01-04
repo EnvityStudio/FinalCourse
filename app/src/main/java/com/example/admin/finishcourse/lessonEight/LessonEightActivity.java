@@ -53,6 +53,7 @@ public class LessonEightActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson8_main);
+        setTitle("Lesson 8");
         studentList = new ArrayList<>();
         edtName = (EditText) findViewById(R.id.edtNameLesson8);
         edtClassName = (EditText) findViewById(R.id.edtClassLesson8);
@@ -133,12 +134,14 @@ public class LessonEightActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+
             }
         });
         thread.start();
         Log.d(TAG, json);
         return json;
     }
+
 
     private class StudentInfoProcesor extends AsyncTask<String, Void, Integer> {
 

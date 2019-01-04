@@ -38,6 +38,7 @@ public class LessonSevenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG,"onCreate");
         setContentView(R.layout.activity_lesson7_main);
+        setTitle("Lesson 7");
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerViewLesson7);
         String url = Constants.LOCALHOST+Constants.PATH_STUDENT;
         Log.d(TAG,"onCreate: " +url);
