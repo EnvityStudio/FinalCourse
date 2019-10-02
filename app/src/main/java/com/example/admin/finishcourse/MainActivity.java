@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnLesson7;
     private Button btnLesson8;
     private Context mContext;
+    private String version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLesson6.setOnClickListener(this);
         btnLesson7.setOnClickListener(this);
         btnLesson8.setOnClickListener(this);
+        version = "version 2019";
     }
 
     @Override
